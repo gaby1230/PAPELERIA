@@ -1,0 +1,22 @@
+<?php
+
+if(!empty($_POST)){
+	if(isset($_POST["id_producto"]) &&isset($_POST["nombre"]) &&isset($_POST["piezas"]) &&isset($_POST["precio"]) &&isset($_POST["total"])){
+		if($_POST["nombre"]!=""&& $_POST["piezas"]!=""&&$_POST["precios"]!=""){
+			include "conexion.php";
+			
+			$sql = "insert into person(id_producto,nombre,piezas,precio,total) value (\"$_POST[nombre]\",\"$_POST[nombre]\",\"$_POST[piezas]\",\"$_POST[precio]\",\"$_POST[total]\",NOW())";
+			$query = $con->query($sql);
+			if($query!=null){
+				print "<script>alert(\"Se agrego exitosamente tu producto.\");window.location='../ver.php';</script>";
+			}else{
+				print "<script>alert(\"No se pudo agregar tu producto con exit.\");window.location='../ver.php';</script>";
+
+			}
+		}
+	}
+}
+
+
+
+?>
