@@ -1,0 +1,22 @@
+<?php
+
+if(!empty($_POST)){
+	if(isset($_POST["id_producto"]) &&isset($_POST["nombre"]) &&isset($_POST["piezas"]) &&isset($_POST["precio"]) &&isset($_POST["total"])){
+		if($_POST["nombre"]!=""&& $_POST["piezas"]!=""&&$_POST["precio"]!=""){
+			include "conexion.php";
+			
+			$sql = "update person set id_producto=\"$_POST[id_producto]\",nombre=\"$_POST[nombre]\",piezas=\"$_POST[piezas]\",precio=\"$_POST[precio]\",total=\"$_POST[total]\", where id=".$_POST["id"];
+			$query = $con->query($sql);
+			if($query!=null){
+				print "<script>alert(\"Se actualizo exitosamente tu lista de productos.\");window.location='../ver.php';</script>";
+			}else{
+				print "<script>alert(\"No se pudo actualizar exitosamente tu lista de productos.\");window.location='../ver.php';</script>";
+
+			}
+		}
+	}
+}
+
+
+
+?>
